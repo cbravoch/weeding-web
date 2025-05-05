@@ -2,7 +2,7 @@ import Carousel from "@/components/Carousel";
 import Countdown from "@/components/Countdown";
 import Footer from "@/components/Footer";
 import MainTitle from "@/components/MainTitle";
-import Location from "@/components/location";
+import Location from "@/components/Location";
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-crema">
