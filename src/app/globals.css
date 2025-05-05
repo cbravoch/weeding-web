@@ -1,8 +1,8 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@plugin "daisyui";
 
 :root {
   --background: #ffffff;
@@ -24,7 +24,9 @@
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply bg-crema text-gray-800 font-elegant;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-elegant text-dorado;
 }
