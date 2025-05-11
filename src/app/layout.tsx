@@ -1,18 +1,14 @@
 import type { Metadata } from "next";
-import { Geist_Mono, Inter } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Providers from "@/components/Providers";
+import { Toaster } from 'react-hot-toast';
 
 const inter = Inter({ subsets: ["latin"] });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-  title: "Boda MyH",
-  description: "Sitio web para la boda de MyH",
+  title: "Boda App",
+  description: "Aplicación para gestionar la boda",
 };
 
 export default function RootLayout({
@@ -21,9 +17,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
-      <body className={`${inter.className} ${geistMono.variable}`}>
-        <Providers>{children}</Providers>
+    <html lang="es" className="h-full">
+      <body className={`${inter.className} h-full`}>
+        <Providers>
+          <div className="h-full">
+            {children}
+            <Toaster 
+              position="top-right"
+              toastOptions={{
+                duration: 3000,
+                style: {
+                  background: '#333',
+                  color: '#fff',
+                },
+              }}
+            />
+          </div>
+        </Providers>
       </body>
     </html>
   );

@@ -12,7 +12,7 @@ export default function FormPhotos({ onClose }: FormPhotosProps) {
         <div>
           <input
             type="file"
-            className="w-full bg-crema border-2 border-dorado rounded-lg p-2 pl-10 focus:outline-none focus:border-dorado/80"
+            className="w-full bg-crema border-2 border-[#849AAD] rounded-lg p-2 pl-10 focus:outline-none focus:border-[#849AAD]/80"
             placeholder="Título de la foto"
           />
         </div>

@@ -5,32 +5,70 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-primary: #F1F1F1;
+  --color-text: #333333;
+  --color-accent: #D4AF37; /* dorado */
+  --color-border: #849AAD;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Reset y estilos base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scrollbar-width: none; /* Para Firefox */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+*::-webkit-scrollbar {
+  display: none; /* Para Chrome, Safari y Edge */
+}
+
+/* Establecer el fondo de la aplicación */
+html, body, #__next {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: var(--color-primary);
+  -ms-overflow-style: none; /* Para IE y Edge */
 }
 
 body {
-  @apply bg-crema text-gray-800 font-elegant;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
+/* Clases personalizadas para bordes */
+.border-custom {
+  border-color: var(--color-border);
+}
+
+.border-custom-2 {
+  border-width: 2px;
+  border-color: var(--color-border);
+}
+
+.border-custom-4 {
+  border-width: 4px;
+  border-color: var(--color-border);
+}
+
+/* Estilos para títulos */
 h1, h2, h3, h4, h5, h6 {
-  @apply font-elegant text-dorado;
+  font-family: 'Playfair Display', serif;
+  color: var(--color-accent);
 }
 
+/* Scroll suave */
 html {
   scroll-behavior: smooth;
 }

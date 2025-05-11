@@ -34,7 +34,7 @@ export default function Modal({ children, isOpen, onClose  }: ModalProps) {
                 onClick={onClose}
             ></div>
             <div 
-                className={`bg-crema border-4 border-dorado rounded-xl shadow-xl p-6 md:p-8 w-full max-w-2xl relative z-10 transition-all duration-300 transform ${isAnimating ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-4 opacity-0 scale-95'}`}
+                className={`bg-crema border-4 border-[#849AAD] rounded-xl shadow-xl p-6 md:p-8 w-full max-w-2xl relative z-10 transition-all duration-300 transform ${isAnimating ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-4 opacity-0 scale-95'}`}
             >
                 <button 
                     onClick={onClose} 

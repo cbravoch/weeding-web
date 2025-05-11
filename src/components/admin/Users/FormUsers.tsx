@@ -15,7 +15,7 @@ export default function FormUsers({ onClose }: FormGuestProps) {
           <div className="relative">
             <input
               type="email"
-              className="w-full bg-crema border-2 border-dorado rounded-lg p-2 pl-10 focus:outline-none focus:border-dorado/80"
+              className="w-full bg-crema border-custom-2 rounded-lg p-2 pl-10 focus:outline-none focus:border-custom"
               placeholder="email@ejemplo.com"
             />
             <FaEnvelope className="absolute left-3 top-3 text-dorado" />

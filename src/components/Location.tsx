@@ -3,7 +3,7 @@ export default function Location() {
     <div className="w-full mx-auto my-4 md:my-8 px-2 md:px-4">
       <h1 className="text-2xl md:text-4xl lg:text-5xl font-elegant text-dorado text-center mb-4">Ubicación del evento</h1>
       <div className="w-full h-[300px] md:h-[600px] relative">
-        <div className="absolute inset-0 border-4 border-dorado rounded-xl shadow-xl">
+        <div className="absolute inset-0 border-4 border-[#849AAD] rounded-xl shadow-xl">
         </div>
         <div className="absolute inset-0 m-1 rounded-lg overflow-hidden">
           <iframe

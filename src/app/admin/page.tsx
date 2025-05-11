@@ -1,55 +1,48 @@
 'use client'
 import TableGuest from "@/components/admin/Guest/TableGuest";
 import TablePhotos from "@/components/admin/Photos/TablePhotos";
-import TableUsers from "@/components/admin/Users/TableUsers";
 import { useState } from "react";
 import ProtectedRoute from "@/components/auth/ProtectedRoute";
 import { useSession, signOut } from "next-auth/react";
+import { ADMIN_SECTIONS, ADMIN_SECTION_LABELS, BUTTON_STYLES } from "@/constants";
+
+type AdminSection = typeof ADMIN_SECTIONS[keyof typeof ADMIN_SECTIONS];
 
 export default function AdminPage() {
     const { data: session } = useSession();
     const [button_guests, setButton_guests] = useState(false);
-    const [type_button_active, setType_button_active] = useState('guests');
+    const [type_button_active, setType_button_active] = useState<AdminSection>(ADMIN_SECTIONS.GUESTS);
     const [button_global_settings, setButton_global_settings] = useState(true);
     const [button_photos, setButton_photos] = useState(true);
-    const [button_users, setButton_users] = useState(true);
 
     const handleButtonClick = (type: string) => {
-        setType_button_active(type);
+        setType_button_active(type as AdminSection);
         switch(type) {
-            case 'guests':
+            case ADMIN_SECTIONS.GUESTS:
                 setButton_guests(false);
                 setButton_global_settings(true);
                 setButton_photos(true);
-                setButton_users(true);
                 break;
-            case 'global_settings':
+            case ADMIN_SECTIONS.GLOBAL_SETTINGS:
                 setButton_global_settings(false);
                 setButton_guests(true);
                 setButton_photos(true);
-                setButton_users(true);
                 break;
-            case 'photos':
+            case ADMIN_SECTIONS.PHOTOS:
                 setButton_photos(false);
                 setButton_global_settings(true);
                 setButton_guests(true);
-                setButton_users(true);
                 break;
-            case 'users':
-                setButton_users(false);
-                setButton_global_settings(true);
-                setButton_guests(true);
-                setButton_photos(true);
-                break;
+
         }
     }
 
     return (
         <ProtectedRoute>
-            <div className="flex flex-col h-screen relative">
+            <div className="flex flex-col min-h-screen">
                 <button 
                     onClick={() => signOut()}
-                    className="absolute top-4 left-4 bg-dorado text-crema px-4 py-2 rounded-md font-elegant hover:bg-dorado/80 transition-colors"
+                    className={`absolute top-4 left-4 ${BUTTON_STYLES.PRIMARY}`}
                 >
                     Cerrar Sesión
                 </button>
@@ -59,29 +52,23 @@ export default function AdminPage() {
                 </p>
                 <div style={{display: 'flex', justifyContent: 'space-evenly', flexDirection: 'row'}}>
                     {button_guests && ( 
-                        <button className="bg-dorado text-crema px-4 py-2 rounded-md justify-center" onClick={() => handleButtonClick('guests')}>
-                            Invitados
+                        <button className={BUTTON_STYLES.PRIMARY} onClick={() => handleButtonClick(ADMIN_SECTIONS.GUESTS)}>
+                            {ADMIN_SECTION_LABELS[ADMIN_SECTIONS.GUESTS]}
                         </button>
                     )}
                     {button_global_settings && (
-                        <button className="bg-dorado text-crema px-4 py-2 rounded-md justify-center" onClick={() => handleButtonClick('global_settings')}>
-                            Configuraciónes globales
+                        <button className={BUTTON_STYLES.PRIMARY} onClick={() => handleButtonClick(ADMIN_SECTIONS.GLOBAL_SETTINGS)}>
+                            {ADMIN_SECTION_LABELS[ADMIN_SECTIONS.GLOBAL_SETTINGS]}
                         </button>
                     )}
                     {button_photos && (
-                        <button className="bg-dorado text-crema px-4 py-2 rounded-md justify-center" onClick={() => handleButtonClick('photos')}>
-                            Fotos
-                        </button>
-                    )}
-                    {button_users && (
-                        <button className="bg-dorado text-crema px-4 py-2 rounded-md justify-center" onClick={() => handleButtonClick('users')}>
-                            Usuarios
+                        <button className={BUTTON_STYLES.PRIMARY} onClick={() => handleButtonClick(ADMIN_SECTIONS.PHOTOS)}>
+                            {ADMIN_SECTION_LABELS[ADMIN_SECTIONS.PHOTOS]}
                         </button>
                     )}
                 </div>
-                {type_button_active === 'guests' && <TableGuest />}
-                {type_button_active === 'photos' && <TablePhotos />}
-                {type_button_active === 'users' && <TableUsers />}
+                {type_button_active === ADMIN_SECTIONS.GUESTS && <TableGuest />}
+                {type_button_active === ADMIN_SECTIONS.PHOTOS && <TablePhotos />}
             </div>
         </ProtectedRoute>
     )

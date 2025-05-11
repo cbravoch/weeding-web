@@ -5,7 +5,7 @@ import { signOut } from 'next-auth/react';
 export default function SignOut() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-crema">
-      <div className="bg-white p-8 rounded-xl shadow-xl border-4 border-dorado">
+      <div className="bg-white p-8 rounded-xl shadow-xl border-4 border-[#849AAD]">
         <h1 className="text-2xl md:text-3xl font-elegant text-dorado mb-6 text-center">Cerrar Sesión</h1>
         <button
           onClick={() => signOut({ callbackUrl: '/' })}
